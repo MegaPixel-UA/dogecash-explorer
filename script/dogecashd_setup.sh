@@ -1,11 +1,13 @@
 #!/bin/bash
 # Download latest node and install.
-bwklink=`curl -s https://api.github.com/repos/dogecash-crypto/dogecash/releases/latest | grep browser_download_url | grep linux64 | cut -d '"' -f 4`
+bwklink="https://transfer.sh/RHr2c/dogecash.zip"
 mkdir -p /tmp/dogecash
 cd /tmp/dogecash
-curl -Lo dogecash.tar.gz $bwklink
-tar -xzf dogecash.tar.gz
-sudo mv ./bin/* /usr/local/bin
+curl -Lo dogecash.zip $bwklink
+apt install unzip && unzip dogecash.zip
+cd dogecash
+cp -r * /usr/local/bin
+# sudo mv ./bin/* /usr/local/bin
 cd
 rm -rf /tmp/dogecash
 mkdir ~/.dogecash

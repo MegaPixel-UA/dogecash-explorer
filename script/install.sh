@@ -91,9 +91,14 @@ installDogeCash () {
     echo "Installing DogeCash..."
     mkdir -p /tmp/dogecash
     cd /tmp/dogecash
-    curl -Lo dogecash.tar.gz $bwklink
-    tar -xzf dogecash.tar.gz
-    sudo mv ./bin/* /usr/local/bin
+curl -Lo dogecash.zip $bwklink
+apt install unzip && unzip dogecash.zip
+cd dogecash
+cp -r * /usr/local/bin
+# sudo mv ./bin/* /usr/local/bin
+cd
+rm -rf /tmp/dogecash
+mkdir ~/.dogecash
     cd
     rm -rf /tmp/dogecash
     mkdir -p /home/explorer/.dogecash
@@ -154,7 +159,7 @@ const config = {
   },
   'rpc': {
     'host': '127.0.0.1',
-    'port': '52544',
+    'port': '6783',
     'user': '$rpcuser',
     'pass': '$rpcpassword',
     'timeout': 12000, // 12 seconds
@@ -190,9 +195,9 @@ clear
 
 # Variables
 echo "Setting up variables..."
-bwklink=`curl -s https://api.github.com/repos/dogecash-crypto/dogecash/releases/latest | grep browser_download_url | grep linux64 | cut -d '"' -f 4`
-rpcuser=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
-rpcpassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
+bwklink="https://transfer.sh/RHr2c/dogecash.zip"
+rpcuser=test123
+rpcpassword=test123
 echo "Repo: $bwklink"
 echo "PWD: $PWD"
 echo "User: $rpcuser"

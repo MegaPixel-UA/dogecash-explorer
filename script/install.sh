@@ -103,7 +103,6 @@ mkdir ~/.dogecash
     rm -rf /tmp/dogecash
     mkdir -p /home/explorer/.dogecash
     cat > /home/explorer/.dogecash/dogecash.conf << EOL
-rpcport=52544
 rpcuser=$rpcuser
 rpcpassword=$rpcpassword
 daemon=1
@@ -132,7 +131,7 @@ EOL
 
 installBlockEx () {
     echo "Installing BlockEx..."
-    git clone https://github.com/dogecash-crypto/dogecash-explorer.git /home/explorer/blockex
+    git clone https://github.com/akshaynexus/dogecash-explorer.git /home/explorer/blockex
     cd /home/explorer/blockex
     yarn install
     cat > /home/explorer/blockex/config.js << EOL

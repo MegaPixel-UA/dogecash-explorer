@@ -126,7 +126,7 @@ EOL
     sudo systemctl start dogecashd
     sudo systemctl enable dogecashd
     echo "Sleeping for 1 hour while node syncs blockchain..."
-    sleep 1h
+    sleep 1s
     clear
 }
 
